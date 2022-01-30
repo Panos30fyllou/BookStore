@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "743478083286",
+    "firebase_url": "https://bookstore-b9697-default-rtdb.firebaseio.com",
     "project_id": "bookstore-b9697",
     "storage_bucket": "bookstore-b9697.appspot.com"
   },

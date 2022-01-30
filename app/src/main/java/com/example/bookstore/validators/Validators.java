@@ -1,5 +1,7 @@
 package com.example.bookstore.validators;
 
+import android.widget.EditText;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,37 +37,14 @@ public class Validators {
         if (count == 0)
             return false;
 
-        if (!(password.contains("@") || password.contains("#")
-                || password.contains("!") || password.contains("~")
-                || password.contains("$") || password.contains("%")
-                || password.contains("^") || password.contains("&")
-                || password.contains("*") || password.contains("(")
-                || password.contains(")") || password.contains("-")
-                || password.contains("+") || password.contains("/")
-                || password.contains(":") || password.contains(".")
-                || password.contains(", ") || password.contains("<")
-                || password.contains(">") || password.contains("?")
-                || password.contains("|"))) {
-            return false;
-        }
-        count = 0;
-        for (int i = 65; i <= 90; i++) {
-            char c = (char) i;
-            if (password.contains(Character.toString(c)))
-                count = 1;
-        }
-        if (count == 0)
-            return false;
+        return true;
+    }
 
-        count = 0;
-        for (int i = 90; i <= 122; i++) {
-            char c = (char) i;
-            if (password.contains(Character.toString(c)))
-                count = 1;
-        }
-        if (count == 0)
+    public static boolean isEditTextFilled(EditText editText) {
+        if (editText.getText().toString().isEmpty()) {
+            editText.setError(editText.getHint() + " is required");
             return false;
-
+        }
         return true;
     }
 }
