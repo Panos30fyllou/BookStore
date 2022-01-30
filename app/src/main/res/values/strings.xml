@@ -6,7 +6,12 @@
     <string name="register">Register</string>
     <string name="email">email</string>
     <string name="confirmPassword">Confirm Password</string>
-    <string name="goToRegisterMessage">Don\'t have an account?\n Register here</string>
+    <string name="goToRegisterMessage">Don\'t have an account?\n Click here to register</string>
     <string name="book_store_Title">Book Store</string>
-    <string name="goToLoginMessage">Already have an account? Login here</string>
+    <string name="goToLoginMessage">Already have an account?\n Click here to login</string>
+    <string name="app_logo_message">App Logo</string>
+    <string name="address">Address</string>
+    <string name="full_name">Full Name</string>
+    <string name="u_personal_info"><u>Personal Info</u></string>
+    <string name="u_account_info"><u>Account Info</u></string>
 </resources>

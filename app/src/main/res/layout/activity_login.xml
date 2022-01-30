@@ -19,12 +19,13 @@
 
         <ImageView
             android:id="@+id/appLogoImageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/ic_baseline_menu_book_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:tint="@color/jungle_green" />
+            app:tint="@color/jungle_green"
+            android:contentDescription="@string/app_logo_message" />
 
         <TextView
             android:id="@+id/appTitleImageView"
@@ -32,18 +33,18 @@
             android:layout_height="wrap_content"
             android:text="@string/book_store_Title"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/registerTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="@string/login"
         android:textAlignment="center"
         android:textSize="40sp"
-        app:layout_constraintTop_toBottomOf="@id/titleLinearLayout" />
+        app:layout_constraintTop_toBottomOf="@id/titleLinearLayout"
+        app:layout_constraintBottom_toTopOf="@id/loginFormConstraintLayout"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginFormConstraintLayout"
@@ -74,8 +75,9 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:minHeight="48dp"
-                android:shadowColor="@color/jungle_green"
-                android:textColorHint="@color/jungle_green" />
+                android:focusedByDefault="true"
+                android:drawableTint="@color/jungle_green"
+                android:textColor="@color/jungle_green"/>
 
             <EditText
                 android:id="@+id/passwordEditText"
@@ -89,16 +91,21 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:minHeight="48dp"
-                android:shadowColor="@color/jungle_green"
-                android:textColorHint="@color/jungle_green" />
+                android:drawableTint="@color/jungle_green"
+                android:textColor="@color/jungle_green"/>
 
             <TextView
                 android:id="@+id/goToRegisterTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:minHeight="48dp"
+                android:onClick="goToRegister"
                 android:text="@string/goToRegisterMessage"
-                android:textAlignment="center" />
+                android:textStyle="bold"
+                android:gravity="center" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
