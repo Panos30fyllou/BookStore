@@ -33,6 +33,7 @@ public class StoreActivity extends AppCompatActivity {
     ArrayList<Book> books;
     TableLayout ll;
     ProgressBar progressBar;
+    boolean booksLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +48,14 @@ public class StoreActivity extends AppCompatActivity {
         booksTable.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                progressBar.setVisibility(View.VISIBLE);
-                for (DataSnapshot bookDataSnapshot : snapshot.getChildren()) {
-                    Book book = bookDataSnapshot.getValue(Book.class);
-                    books.add(bookDataSnapshot.getValue(Book.class));
-                    assert book != null;
-                    Toast.makeText(getBaseContext(), book.getImageBase64(), Toast.LENGTH_SHORT).show();
 
-
+                if(!booksLoaded) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    for (DataSnapshot bookDataSnapshot : snapshot.getChildren()) {
+                        books.add(bookDataSnapshot.getValue(Book.class));
+                    }
+                    showBooks();
                 }
-                showBooks();
             }
 
             @Override
