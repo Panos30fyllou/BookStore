@@ -12,17 +12,19 @@ public class Book {
     private String author;
     private String description;
     private String imageBase64;
+    private int price;
     private int quantity;
     private Bitmap imageBitmap;
 
     public Book(){
 
     }
-    public Book(String name, String author, String description, String imageBase64, int quantity){
+    public Book(String name, String author, String description, String imageBase64, int price, int quantity){
 
         this.name = name;
         this.author = author;
         this.description = description;
+        this.price = price;
         this.quantity = quantity;
         this.imageBase64 = imageBase64;
     }
@@ -85,4 +87,11 @@ public class Book {
         imageBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }
