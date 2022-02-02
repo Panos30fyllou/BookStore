@@ -7,7 +7,7 @@ import android.util.Base64;
 
 public class Book {
 
-    private long id;
+    private int id;
     private String name;
     private String author;
     private String description;
@@ -29,11 +29,11 @@ public class Book {
         this.imageBase64 = imageBase64;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -94,4 +94,6 @@ public class Book {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public boolean isAvailable(){ return getQuantity() > 0;}
 }

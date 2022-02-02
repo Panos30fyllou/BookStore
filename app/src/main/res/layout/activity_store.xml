@@ -44,7 +44,7 @@
                 android:background="@drawable/rounded_corners"
                 android:backgroundTint="@color/galdenrod_yellow"
                 android:padding="5dp"
-                android:text="Total Amount: 50€" />
+                android:text="@string/total_cost" />
 
             <RelativeLayout
                 android:layout_margin="5dp"
@@ -66,7 +66,7 @@
                     app:tint="@color/jungle_green" />
 
                 <TextView
-                    android:id="@+id/badge_textView"
+                    android:id="@+id/booksInCartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@id/addToCartButton"

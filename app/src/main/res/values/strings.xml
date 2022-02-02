@@ -15,4 +15,5 @@
     <string name="u_personal_info"><u>Personal Info</u></string>
     <string name="u_account_info"><u>Account Info</u></string>
     <string name="currency">€</string>
+    <string name="total_cost">"Total Cost: "</string>
 </resources>
