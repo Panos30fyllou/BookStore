@@ -19,8 +19,8 @@ public class Book {
     public Book(){
 
     }
-    public Book(String name, String author, String description, String imageBase64, int price, int quantity){
-
+    public Book(int id, String name, String author, String description, String imageBase64, int price, int quantity){
+        this.id = id;
         this.name = name;
         this.author = author;
         this.description = description;
@@ -49,24 +49,12 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String  getImageBase64() {
         return imageBase64;
     }
 
     public void setImageBase64(String imageBase64) {
         this.imageBase64 = imageBase64;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getQuantity() {

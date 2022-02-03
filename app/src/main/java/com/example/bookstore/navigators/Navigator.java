@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.bookstore.activities.ConfirmOrderActivity;
 import com.example.bookstore.activities.LoginActivity;
 import com.example.bookstore.activities.RegisterActivity;
 import com.example.bookstore.activities.StoreActivity;
@@ -17,5 +18,8 @@ public class Navigator {
     }
     public static void goToStore(Activity activity){
         activity.startActivity(new Intent(activity, StoreActivity.class));
+    }
+    public static void goToConfirmOrder(Activity activity){
+        activity.startActivity(new Intent(activity, ConfirmOrderActivity.class));
     }
 }
