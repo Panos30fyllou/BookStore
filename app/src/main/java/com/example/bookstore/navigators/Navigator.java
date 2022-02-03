@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.example.bookstore.activities.ConfirmOrderActivity;
 import com.example.bookstore.activities.LoginActivity;
+import com.example.bookstore.activities.OrderConfirmed;
 import com.example.bookstore.activities.RegisterActivity;
 import com.example.bookstore.activities.StoreActivity;
 
@@ -21,5 +22,8 @@ public class Navigator {
     }
     public static void goToConfirmOrder(Activity activity){
         activity.startActivity(new Intent(activity, ConfirmOrderActivity.class));
+    }
+    public static void goToOrderConfirmed(Activity activity){
+        activity.startActivity(new Intent(activity, OrderConfirmed.class));
     }
 }

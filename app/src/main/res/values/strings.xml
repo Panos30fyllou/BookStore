@@ -17,4 +17,6 @@
     <string name="currency">€</string>
     <string name="total_cost">"Total Cost: "</string>
     <string name="comments">Comments</string>
+    <string name="cart">Cart</string>
+    <string name="order_confirmed">Your order has been confirmed!</string>
 </resources>

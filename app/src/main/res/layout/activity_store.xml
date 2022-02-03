@@ -67,6 +67,7 @@
                     android:onClick="goToConfirmOrder"
                     android:padding="8dp"
                     android:src="@drawable/ic_baseline_shopping_cart_24"
+                    android:contentDescription="@string/cart"
                     app:tint="@color/jungle_green" />
 
                 <TextView

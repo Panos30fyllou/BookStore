@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
+            android:name=".activities.OrderConfirmed"
+            android:exported="false" />
+        <activity
             android:name=".activities.ConfirmOrderActivity"
             android:exported="false" />
         <activity

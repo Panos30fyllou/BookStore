@@ -76,6 +76,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/rounded_corners"
                 android:backgroundTint="@color/galdenrod_yellow"
+                android:onClick="goToOrderConfirmed"
                 android:src="@drawable/ic_baseline_check_24" />
         </com.google.android.material.bottomappbar.BottomAppBar>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

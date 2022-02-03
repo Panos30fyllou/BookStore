@@ -40,6 +40,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     public void goToStore(View v) {
         Navigator.goToStore(this);
     }
+    public void goToOrderConfirmed(View v) {
+        Navigator.goToOrderConfirmed(this);
+    }
 
     public void increaseQuantity(View v) {
         int id = BookHelper.getBookIdFromConfirmRow(v);
