@@ -59,32 +59,27 @@ public class RegisterActivity extends AppCompatActivity {
         registerFormEditTexts.add(confirmPasswordEditText);
 
         for (EditText editText : registerFormEditTexts) {
-            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean b) {
-                    if (!b && isEditTextFilled((EditText) view)) {
-                        if (view.getId() == emailEditText.getId()) {
-                            if (!Validators.isValidEmail(emailEditText.getText().toString())) {
-                                emailEditText.setError("Email is invalid");
-                                Toast.makeText(RegisterActivity.this, "Email is invalid", Toast.LENGTH_SHORT).show();
-                            }
-                        } else if (view.getId() == usernameEditText.getId()) {
-                            if (!Validators.isValidUsername(usernameEditText.getText().toString())) {
-                                usernameEditText.setError("Invalid username form");
-                                Toast.makeText(RegisterActivity.this, "Username must consist of 6 to 30 alphanumeric characters and underscores (_).", Toast.LENGTH_SHORT).show();
-                            }
-                        } else if (view.getId() == passwordEditText.getId()) {
-                            if (!Validators.isValidPassword(passwordEditText.getText().toString())) {
-                                passwordEditText.setError("Invalid password form");
-                                Toast.makeText(RegisterActivity.this, "Password length must consist of 8 to 15 characters and contain at least one digit and not contain any spaces", Toast.LENGTH_LONG).show();
-                            }
+            editText.setOnFocusChangeListener((view, b) -> {
+                if (!b && isEditTextFilled((EditText) view)) {
+                    if (view.getId() == emailEditText.getId()) {
+                        if (!Validators.isValidEmail(emailEditText.getText().toString())) {
+                            emailEditText.setError(getString(R.string.email_invalid));
+                            Toast.makeText(RegisterActivity.this, getString(R.string.email_invalid), Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (view.getId() == usernameEditText.getId()) {
+                        if (!Validators.isValidUsername(usernameEditText.getText().toString())) {
+                            usernameEditText.setError(getString(R.string.username_invalid));
+                            Toast.makeText(RegisterActivity.this, getString(R.string.username_invalid_detailed), Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (view.getId() == passwordEditText.getId()) {
+                        if (!Validators.isValidPassword(passwordEditText.getText().toString())) {
+                            passwordEditText.setError(getString(R.string.password_invalid));
+                            Toast.makeText(RegisterActivity.this, getString(R.string.password_invalid_detailed), Toast.LENGTH_LONG).show();
                         }
                     }
                 }
             });
-
         }
-
     }
 
     public void registerClicked(View v) {
@@ -105,49 +100,42 @@ public class RegisterActivity extends AppCompatActivity {
             if (Objects.requireNonNull(password).equals(confirmation))
                 createUserInFirebase(new User(username, email, fullName, address), password);
             else {
-                confirmPasswordEditText.setError("Passwords don't match");
+                confirmPasswordEditText.setError(getString(R.string.passwords_dont_match));
                 confirmPasswordEditText.requestFocus();
             }
         }
     }
 
     private void createUserInFirebase(User user, String password) {
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(user.getEmail(), password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseDatabase.getInstance().getReference("Users").child(user.getUsername()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful())
-                                Navigator.goToLogin(RegisterActivity.this);
-                            Toast.makeText(RegisterActivity.this, task.isSuccessful() ? "User has been registered" : "Registration failed 1", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else
-                    Toast.makeText(RegisterActivity.this, Objects.requireNonNull(Objects.requireNonNull(task.getException()).getMessage()), Toast.LENGTH_SHORT).show();
-            }
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(user.getEmail(), password).addOnCompleteListener(userCreationTask -> {
+            if (userCreationTask.isSuccessful()) {
+                FirebaseDatabase.getInstance().getReference("Users").child(user.getUsername()).setValue(user).addOnCompleteListener(addUserToDbTask -> {
+                    if (addUserToDbTask.isSuccessful())
+                        Navigator.goToLogin(RegisterActivity.this);
+                    Toast.makeText(RegisterActivity.this, addUserToDbTask.isSuccessful() ? getString(R.string.registration_success) : getString(R.string.registration_failed), Toast.LENGTH_SHORT).show();
+                });
+            } else
+                Toast.makeText(RegisterActivity.this, Objects.requireNonNull(Objects.requireNonNull(userCreationTask.getException()).getMessage()), Toast.LENGTH_SHORT).show();
         });
-    }
-
-
-    public void goToLogin(View v) {
-        Navigator.goToLogin(this);
     }
 
     public boolean validateAccountInfo(String email, String username, String password) {
         if (!Validators.isValidEmail(email)) {
-            Toast.makeText(this, "Email is invalid", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.email_invalid), Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!Validators.isValidUsername(username)) {
-            Toast.makeText(this, "Username must consist of 6 to 30 alphanumeric characters and underscores (_).", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.username_invalid_detailed), Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!Validators.isValidPassword(password)) {
-            Toast.makeText(this, "Password length must consist of 8 to 15 characters and contain at least one digit, special character, lowercase and uppercase letter and not contain any spaces", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.password_invalid_detailed), Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
+    }
+
+    public void goToLogin(View v) {
+        Navigator.goToLogin(this);
     }
 }

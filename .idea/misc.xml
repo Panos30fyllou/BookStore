@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.321" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.321" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.42552083333333335" />
+        <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/drawable/icon.xml" value="0.1965" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/drawable/rounded_corners.xml" value="0.42552083333333335" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/activity_confirm_order.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/book_order_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/book_row.xml" value="0.25" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/divider.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.321" />
       </map>
     </option>
   </component>

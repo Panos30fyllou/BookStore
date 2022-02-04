@@ -7,14 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".activities.ConfirmOrderActivity">
 
+    <TextView
+        android:id="@+id/confirmOrderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_order"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:paddingTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+/>
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/orderCommentEditText"
+        app:layout_constraintBottom_toTopOf="@id/orderCommentEditText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/confirmOrderTextView">
 
         <TableLayout
             android:id="@+id/bookOrderTableLayout"

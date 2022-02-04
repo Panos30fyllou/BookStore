@@ -18,6 +18,7 @@ import com.example.bookstore.helpers.BookHelper;
 import com.example.bookstore.helpers.TableHelper;
 import com.example.bookstore.models.Book;
 import com.example.bookstore.models.Cart;
+import com.example.bookstore.models.State;
 import com.example.bookstore.models.Store;
 import com.example.bookstore.navigators.Navigator;
 import com.google.firebase.database.DataSnapshot;
@@ -26,28 +27,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
 public class StoreActivity extends AppCompatActivity {
     private DatabaseReference booksTable;
-
-    ArrayList<Book> books;
-     TableLayout bookTableLayout;
-     ProgressBar progressBar;
-
-    TextView totalCostTextView;
-    TextView booksInCartTextView;
-
+    private TableLayout bookTableLayout;
+    private ProgressBar progressBar;
+    private TextView totalCostTextView;
+    private TextView booksInCartTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
+        if(State.user == null)
+            Navigator.goToLogin(this);
+
         booksInCartTextView = findViewById(R.id.booksInCartTextView);
         booksInCartTextView.setText(String.valueOf(Cart.getSize()));
-
-        books = new ArrayList<>();
         bookTableLayout = findViewById(R.id.bookTableLayout);
         progressBar = findViewById(R.id.progressBar);
         totalCostTextView = findViewById(R.id.bottomBarTotalCostTextView);
@@ -59,11 +55,13 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if (Store.getBooks().size() == 0) {
+                if (Store.needsRefresh) {
                     progressBar.setVisibility(View.VISIBLE);
+                    Store.clear();
                     for (DataSnapshot bookDataSnapshot : snapshot.getChildren()) {
                         Store.add(bookDataSnapshot.getValue(Book.class));
                     }
+                    Store.needsRefresh = false;
                 }
                 TableHelper.showBooksInTable("Store", bookTableLayout, (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE), Store.getBooks(), progressBar, getString(R.string.currency));
             }
@@ -89,9 +87,8 @@ public class StoreActivity extends AppCompatActivity {
                     booksInCartTextView.setText(String.valueOf(Cart.getSize()));
                     bookTableLayout.removeAllViews();
                     TableHelper.showBooksInTable("Store", bookTableLayout, (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE), Store.getBooks(), progressBar, getString(R.string.currency));
-
                 } else {
-                    Toast.makeText(getBaseContext(), "No more copies of this book are available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getString(R.string.book_unavailable), Toast.LENGTH_SHORT).show();
                     plusButton.setVisibility(View.INVISIBLE);
                 }
             }
@@ -99,6 +96,9 @@ public class StoreActivity extends AppCompatActivity {
     }
 
     public void goToConfirmOrder(View v) {
-        Navigator.goToConfirmOrder(this);
+        if(Cart.getSize() > 0)
+            Navigator.goToConfirmOrder(this);
+        else
+            Toast.makeText(getBaseContext(), getString(R.string.add_books_to_cart_message), Toast.LENGTH_SHORT).show();
     }
 }

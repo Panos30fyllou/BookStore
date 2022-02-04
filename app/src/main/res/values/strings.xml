@@ -19,4 +19,18 @@
     <string name="comments">Comments</string>
     <string name="cart">Cart</string>
     <string name="order_confirmed">Your order has been confirmed!</string>
+    <string name="email_invalid">Email is invalid</string>
+    <string name="password_invalid_detailed">Password length must consist of 8 to 15 characters and contain at least one digit, special character, lowercase and uppercase letter and not contain any spaces</string>
+    <string name="username_invalid">Invalid username form</string>
+    <string name="username_invalid_detailed">Username must consist of 6 to 30 alphanumeric characters and underscores (_).</string>
+    <string name="password_invalid">Invalid password form</string>
+    <string name="passwords_dont_match">Passwords don\'t match</string>
+    <string name="registration_success">User has been registered</string>
+    <string name="registration_failed">Registration failed!</string>
+    <string name="book_unavailable">No more copies of this book are available</string>
+    <string name="logout">Logout</string>
+    <string name="back_to_store">Back to Store</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="order_failed">Order failed</string>
+    <string name="add_books_to_cart_message">Please add books to your cart first</string>
 </resources>

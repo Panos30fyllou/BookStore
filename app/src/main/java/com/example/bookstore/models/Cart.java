@@ -7,6 +7,8 @@ public final class Cart {
 
     private static ArrayList<Book> books = new ArrayList<>();
     private static float totalCost = 0;
+    private static String comments = "";
+
 
     private Cart() {
         books = new ArrayList<>();
@@ -24,6 +26,11 @@ public final class Cart {
         books.add(book);
         book.setQuantity(book.getQuantity() - 1);
         totalCost += book.getPrice();
+    }
+
+    public static void removeAll() {
+        books = new ArrayList<>();
+        totalCost = 0;
     }
 
     public static void remove(Book book) {
@@ -45,5 +52,13 @@ public final class Cart {
                 quantity++;
         }
         return quantity;
+    }
+
+    public static String getComments() {
+        return comments;
+    }
+
+    public static void setComments(String comments) {
+        Cart.comments = comments;
     }
 }
