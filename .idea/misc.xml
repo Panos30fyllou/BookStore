@@ -20,10 +20,15 @@
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/book_row.xml" value="0.25" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/layout/divider.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Kingpin/Documents/BookStore/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.321" />
+        <entry key="..\:/Users/Kingpin/Uni/BookStore/app/src/main/res/drawable/badge_circle.xml" value="0.2585" />
+        <entry key="..\:/Users/Kingpin/Uni/BookStore/app/src/main/res/drawable/button.xml" value="0.2585" />
+        <entry key="..\:/Users/Kingpin/Uni/BookStore/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.2585" />
+        <entry key="..\:/Users/Kingpin/Uni/BookStore/app/src/main/res/drawable/icon.xml" value="0.2585" />
+        <entry key="..\:/Users/Kingpin/Uni/BookStore/app/src/main/res/layout/activity_store.xml" value="0.286231884057971" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
